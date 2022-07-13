@@ -39,6 +39,7 @@
 
 - Install docker.<br>
 - Download/ clone [this](https://github.com/genesisthomas/testim-analyzer) github project. </br>
+
 ## Windows:
 - Install [git](https://stackoverflow.com/questions/26522789/how-to-run-sh-on-windows-command-prompt)</br>
   
@@ -52,18 +53,19 @@
   
 ## Mac:
 ```
-./run.sh "<API_KEY>" "<PROJECT_NAME>" "<PROJECT_ID>"
+./run.sh "<PROJECT_NAME>" "<PROJECT_ID>" "<API_KEY>" 
 ```
 ## Windows: </br>
 ```
-sh run.sh "<API_KEY>" "<PROJECT_NAME>" "<PROJECT_ID>"
+sh run.sh "<PROJECT_NAME>" "<PROJECT_ID>" "<API_KEY>" 
 ```
 </br>
+
 **Notes:**
 
-- 1st argument: Replace `<API_KEY>` with [Testim's API Key](https://help.testim.io/docs/api-access#enabling-api-access).
-- 2nd argument: Replace `<PROJECT_NAME>` with your testim project name.
-- 3rd argument: Replace `<PROJECT_ID>` with your testim project id.
+- 1st argument: Replace `<PROJECT_NAME>` with your testim project name.
+- 2nd argument: Replace `<PROJECT_ID>` with your testim project id.
+- 3rd argument: Replace `<API_KEY>` with [Testim's API Key](https://help.testim.io/docs/api-access#enabling-api-access).
 
 <p></br>
 
@@ -71,7 +73,7 @@ sh run.sh "<API_KEY>" "<PROJECT_NAME>" "<PROJECT_ID>"
 
 ## Via downloaded Test runs csv:
 
-**Make sure to download the required test runs CSV files to the current working directory.**
+**Make sure to download the required test runs CSV file to the current working directory.**
 
 </br> 
 
@@ -86,7 +88,7 @@ sh run.sh "<API_KEY>" "<PROJECT_NAME>" "<PROJECT_ID>"
 ```
 
 **Notes:**
-- 4th argument: csvFile=on will analyze any csv files present in the current working directory. 
+- 4th argument: csvFile=on will analyze any test runs csv file present in the current working directory. 
 - There are other configurable filters/ options to enable advanced analysis.
 
 <p></br>

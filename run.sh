@@ -1,14 +1,8 @@
 #!/bin/bash
-# one-line arguments parser https://stackoverflow.com/a/22392039/3729405
-while echo $1 | grep ^- >/dev/null; do
-    declare $(echo $1 | sed 's/-//g' | sed 's/=.*//g' | tr -d '\012')=$(echo $1 | sed 's/.*=//g' | tr -d '\012')
-    shift
-done
-
-API_KEY=$API_KEY
-PROJECT_NAME=$PROJECT_NAME
-PROJECT_ID=$PROJECT_ID
-PARAMS=$PARAMS
+PROJECT_NAME=$1
+PROJECT_ID=$2
+API_KEY=$3
+PARAMS=$4
 
 # Handle missing parameters
 if [ "$API_KEY" = "" ]; then
