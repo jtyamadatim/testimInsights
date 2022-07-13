@@ -1,14 +1,17 @@
 # Testim Failure Analyzer
 
-    This is a fully responsive, interactive, predictive, mobile friendly, emailable, auto generated website that has the ability to analyze failed tests results and provide meaningful insights, create individual testim reports with screenshots & video.
+  This is a fully responsive, interactive, predictive, mobile friendly, emailable, auto generated website that has the ability to analyze failed tests results and provide meaningful insights, create individual testim reports with screenshots & video.
 
 **Disclaimer**: This project is provided "AS IS". It is not officially supported by Testim.
 
 **Table of contents:**</br>
 - [Testim Failure Analyzer](#testim-failure-analyzer)
 - [Pre-requisite:](#pre-requisite)
+  - [Windows:](#windows)
   - [Mac:](#mac)
 - [Steps to execute:](#steps-to-execute)
+  - [Mac:](#mac-1)
+  - [Windows: </br>](#windows-br)
 - [Analyze Test Runs:](#analyze-test-runs)
   - [Via downloaded Test runs csv:](#via-downloaded-test-runs-csv)
     - [High level analysis:](#high-level-analysis)
@@ -33,20 +36,29 @@
 </br>
 
 # Pre-requisite:
-## Mac: 
+
 - Install docker.<br>
 - Download/ clone [this](https://github.com/genesisthomas/testim-analyzer) github project. </br>
-- Open terminal/cmd prompt, navigate to folder where run.sh is present & run the below command:</br>
+## Windows:
+- Install [git](https://stackoverflow.com/questions/26522789/how-to-run-sh-on-windows-command-prompt)</br>
+  
+## Mac: 
+- Open terminal navigate to folder where run.sh is present & run the below command:</br>
 ```chmod +x ./run.sh``` <br>
 
 # Steps to execute:
 
 - Enter the following commands in terminal/ command prompt & then **choose** your preferred parameters from the following **sections** to **analyze** test runs/ **download** single reports with screenshots & videos.
-
+  
+## Mac:
 ```
 ./run.sh "<API_KEY>" "<PROJECT_NAME>" "<PROJECT_ID>"
 ```
-
+## Windows: </br>
+```
+sh run.sh "<API_KEY>" "<PROJECT_NAME>" "<PROJECT_ID>"
+```
+</br>
 **Notes:**
 
 - 1st argument: Replace `<API_KEY>` with [Testim's API Key](https://help.testim.io/docs/api-access#enabling-api-access).
