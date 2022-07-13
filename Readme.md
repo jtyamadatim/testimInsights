@@ -4,7 +4,8 @@
 
 **Disclaimer**: This project is provided "AS IS". It is not officially supported by Testim.
 
-**Table of contents:**</br>
+**Table of contents:**
+
 - [Testim Failure Analyzer](#testim-failure-analyzer)
 - [Pre-requisite:](#pre-requisite)
   - [Windows:](#windows)
@@ -12,28 +13,29 @@
 - [Steps to execute:](#steps-to-execute)
   - [Mac:](#mac-1)
   - [Windows: </br>](#windows-br)
-- [Analyze Test Runs:](#analyze-test-runs)
+- [Analyze Test runs:](#analyze-test-runs)
   - [Via downloaded Test runs csv:](#via-downloaded-test-runs-csv)
     - [High level analysis:](#high-level-analysis)
     - [In-depth Analysis:](#in-depth-analysis)
-  - [Via Testim API:](#via-testim-api)
-    - [Analyze based on dates:](#analyze-based-on-dates)
-    - [Analyze based on **Execution id/ run id**:](#analyze-based-on-execution-id-run-id)
+  - [Via Testim API based on:](#via-testim-api-based-on)
+    - [Dates:](#dates)
+    - [Execution id/ run id:](#execution-id-run-id)
       - [single:](#single)
       - [multiple:](#multiple)
-    - [Analyze based on **Execution name**:](#analyze-based-on-execution-name)
+    - [Execution name:](#execution-name)
       - [single:](#single-1)
       - [multiple:](#multiple-1)
-    - [In-depth Analysis:](#in-depth-analysis-1)
+    - [In-depth Analysis:  </br>](#in-depth-analysis--br)
   - [Advanced Customizations:](#advanced-customizations)
-- [Generate standalone Individual reports with screenshots & video:](#generate-standalone-individual-reports-with-screenshots--video)
+- [Generate standalone reports:](#generate-standalone-reports)
   - [Via downloaded test runs csv (Both Passed & Failed tests)](#via-downloaded-test-runs-csv-both-passed--failed-tests)
   - [Via API: (Only failed tests)](#via-api-only-failed-tests)
     - [based on dates:](#based-on-dates)
     - [single execution name:](#single-execution-name)
     - [single result id:](#single-result-id)
     - [multiple result ids:](#multiple-result-ids)
-</br>
+
+
 
 # Pre-requisite:
 
@@ -45,20 +47,25 @@
   
 ## Mac: 
 - Open terminal navigate to folder where run.sh is present & run the below command:</br>
-```chmod +x ./run.sh``` <br>
+```sh
+chmod +x ./run.sh
+``` 
+<br>
 
 # Steps to execute:
 
 - Enter the following commands in terminal/ command prompt & then **choose** your preferred parameters from the following **sections** to **analyze** test runs/ **download** single reports with screenshots & videos.
   
 ## Mac:
-```
+```sh
 ./run.sh "<PROJECT_NAME>" "<PROJECT_ID>" "<API_KEY>" 
 ```
 ## Windows: </br>
-```
+```sh
 sh run.sh "<PROJECT_NAME>" "<PROJECT_ID>" "<API_KEY>" 
 ```
+
+
 </br>
 
 **Notes:**
@@ -69,22 +76,22 @@ sh run.sh "<PROJECT_NAME>" "<PROJECT_ID>" "<API_KEY>"
 
 <p></br>
 
-# Analyze Test Runs:
+# Analyze Test runs:
 
 ## Via downloaded Test runs csv:
 
-**Make sure to download the required test runs CSV file to the current working directory.**
+**Pre-requisite: Download the required test runs csv file to the current working directory.**
 
 </br> 
 
 ### High level analysis:
-```
- "csvFile=on"
+```sh
+"csvFile=on"
 ```
 
 ### In-depth Analysis:
-```
- "csvFile=on|trends=on|email=on|deep_analytics=on|excel=on|showIssues=on"
+```sh
+"csvFile=on|trends=on|email=on|deep_analytics=on|excel=on|showIssues=on"
 ```
 
 **Notes:**
@@ -93,49 +100,54 @@ sh run.sh "<PROJECT_NAME>" "<PROJECT_ID>" "<API_KEY>"
 
 <p></br>
 
-## Via Testim API:
+## Via Testim API based on:
 </br> 
 
-### Analyze based on dates:
-```
- "startDate=2022-07-12|endDate=2022-07-12"
+### Dates:
+```sh
+"startDate=2022-07-12|endDate=2022-07-12"
 ```
 </br> 
 
-### Analyze based on **Execution id/ run id**:
+### Execution id/ run id:
 #### single:
-```
- "runId=hKqljO1q6WMi8KJn|startDate=2022-06-23|endDate=2022-06-23"
+```sh
+"runId=hKqljO1q6WMi8KJn|startDate=2022-06-23|endDate=2022-06-23"
 ```
 
 #### multiple:
-```
- "runId=Om9t9C4MAXZAuOPE;hKqljO1q6WMi8KJn|startDate=2022-06-23|endDate=2022-06-27"
+```sh
+"runId=Om9t9C4MAXZAuOPE;hKqljO1q6WMi8KJn|startDate=2022-06-23|endDate=2022-06-27"
 ```
 </br> 
 
-### Analyze based on **Execution name**:
+### Execution name:
 #### single:
-```
- "executionName=pass, fail & skip|startDate=2022-06-23|endDate=2022-06-23"
+```sh
+"executionName=pass, fail & skip|startDate=2022-06-23|endDate=2022-06-23"
 ```
 #### multiple:
 
-```
- "executionName=pass, fail & skip;Testim Booking Smoke Web|startDate=2022-06-23|endDate=2022-06-23"
+```sh
+"executionName=pass, fail & skip;Testim Booking Smoke Web|startDate=2022-06-23|endDate=2022-06-23"
 ```
 </br> 
 
 
-### In-depth Analysis:
+### In-depth Analysis:  </br>
 
-```
- "executionName=pass, fail & skip|startDate=2022-06-23|endDate=2022-06-23|trends=on|email=on|deep_analytics=on|excel=on|showIssues=on"
+**Note:** Can be combined with above options
+</br>
+```sh
+"startDate=2022-06-23|endDate=2022-06-23|trends=on|email=on|deep_analytics=on|excel=on|showIssues=on"
 ```
 
 **Notes:**
 - 4th argument: Corresponds to configurable filters/ options to enable advanced analysis.
 <p></br>
+
+**Screenshot:** </br> </br>
+<img src="images/analyzer_report.png" alt="single report" width="700"/>
 
 ## Advanced Customizations:
 
@@ -144,36 +156,39 @@ Change the background color, debug with logs, customize logo & custom version nu
     `testim-analyzer:latest -n "${NAME}" -a "${PARAMS}"` **-b white -d true -l www.wikipedia.org -v 1.0**
 <p></br>
 
-# Generate standalone Individual reports with screenshots & video:
+# Generate standalone reports:
 
 ## Via downloaded test runs csv (Both Passed & Failed tests)
-```
- "csvFile=on|singleReport=on"
+```sh
+"csvFile=on|singleReport=on"
 ```
 </br>
 
 ## Via API: (Only failed tests)
 
 ### based on dates:
-```
- "singleReport=on|startDate=2022-07-12|endDate=2022-07-12"
+```sh
+"singleReport=on|startDate=2022-07-12|endDate=2022-07-12"
 ```
 </br>
 
 ### single execution name:
-```
- "singleReport=on|executionName=pass, fail & skip|startDate=2022-06-23|endDate=2022-06-23"
+```sh
+"singleReport=on|executionName=pass, fail & skip|startDate=2022-06-23|endDate=2022-06-23"
 ```
 </br>
 
 ### single result id: 
-```
- "singleReport=on|resultId=bIXYH4A51vScEg2i|startDate=2022-06-23|endDate=2022-06-23"
+```sh
+"singleReport=on|resultId=bIXYH4A51vScEg2i|startDate=2022-06-23|endDate=2022-06-23"
 ```
 </br>
 
 ### multiple result ids: 
-```
- "singleReport=on|resultId=h9QQu5ehaOF0dqyM;DA0kHuTMG204Da16|startDate=2022-06-23|endDate=2022-06-23"
+```sh
+"singleReport=on|resultId=h9QQu5ehaOF0dqyM;DA0kHuTMG204Da16|startDate=2022-06-23|endDate=2022-06-23"
 ```
 </br>
+
+**Screenshot:** </br> </br>
+<img src="images/single_report.png" alt="single report" width="700"/>
