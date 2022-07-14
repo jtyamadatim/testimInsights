@@ -36,4 +36,5 @@ docker container rm analyzer -f || true &&
     docker cp analyzer:/app/src/output ${PWD} &&
     # Exit & Remove container
     exit &&
-    docker container rm analyzer -f
+    docker container rm analyzer -f && 
+    docker image prune -f
