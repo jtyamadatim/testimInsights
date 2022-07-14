@@ -32,8 +32,8 @@
   - [Via API: (Only failed tests)](#via-api-only-failed-tests)
     - [based on dates:](#based-on-dates)
     - [single execution name:](#single-execution-name)
-    - [single result id:](#single-result-id)
-    - [multiple result ids:](#multiple-result-ids)
+    - [single result id:  (Both Passed & Failed tests)](#single-result-id--both-passed--failed-tests)
+    - [multiple result ids:  (Both Passed & Failed tests)](#multiple-result-ids--both-passed--failed-tests)
 
 
 
@@ -101,35 +101,37 @@ sh run.sh "<PROJECT_NAME>" "<PROJECT_ID>" "<API_KEY>"
 <p></br>
 
 ## Via Testim API based on:
+
+**Note:** Change branch as applicable.</br> 
 </br> 
 
 ### Dates:
 ```sh
-"startDate=2022-07-12|endDate=2022-07-12"
+"startDate=2022-07-12|endDate=2022-07-12|branch=master"
 ```
 </br> 
 
 ### Execution id/ run id:
 #### single:
 ```sh
-"runId=hKqljO1q6WMi8KJn|startDate=2022-06-23|endDate=2022-06-23"
+"runId=hKqljO1q6WMi8KJn|startDate=2022-06-23|endDate=2022-06-23|branch=master"
 ```
 
 #### multiple:
 ```sh
-"runId=Om9t9C4MAXZAuOPE;hKqljO1q6WMi8KJn|startDate=2022-06-23|endDate=2022-06-27"
+"runId=Om9t9C4MAXZAuOPE;hKqljO1q6WMi8KJn|startDate=2022-06-23|endDate=2022-06-27|branch=master"
 ```
 </br> 
 
 ### Execution name:
 #### single:
 ```sh
-"executionName=pass, fail & skip|startDate=2022-06-23|endDate=2022-06-23"
+"executionName=pass, fail & skip|startDate=2022-06-23|endDate=2022-06-23|branch=master"
 ```
 #### multiple:
 
 ```sh
-"executionName=pass, fail & skip;Testim Booking Smoke Web|startDate=2022-06-23|endDate=2022-06-23"
+"executionName=pass, fail & skip;Testim Booking Smoke Web|startDate=2022-06-23|endDate=2022-06-23|branch=master"
 ```
 </br> 
 
@@ -166,27 +168,29 @@ Change the background color, debug with logs, customize logo & custom version nu
 
 ## Via API: (Only failed tests)
 
+**Note:** Change branch as applicable.</br> </br> 
+
 ### based on dates:
 ```sh
-"singleReport=on|startDate=2022-07-12|endDate=2022-07-12"
+"singleReport=on|startDate=2022-07-12|endDate=2022-07-12|branch=master"
 ```
 </br>
 
 ### single execution name:
 ```sh
-"singleReport=on|executionName=pass, fail & skip|startDate=2022-06-23|endDate=2022-06-23"
+"singleReport=on|executionName=pass, fail & skip|startDate=2022-06-23|endDate=2022-06-23|branch=master"
 ```
 </br>
 
-### single result id: 
+### single result id:  (Both Passed & Failed tests)
 ```sh
-"singleReport=on|resultId=bIXYH4A51vScEg2i|startDate=2022-06-23|endDate=2022-06-23"
+"singleReport=on|resultId=bIXYH4A51vScEg2i"
 ```
 </br>
 
-### multiple result ids: 
+### multiple result ids:  (Both Passed & Failed tests)
 ```sh
-"singleReport=on|resultId=h9QQu5ehaOF0dqyM;DA0kHuTMG204Da16|startDate=2022-06-23|endDate=2022-06-23"
+"singleReport=on|resultId=h9QQu5ehaOF0dqyM;DA0kHuTMG204Da16"
 ```
 </br>
 
