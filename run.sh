@@ -33,7 +33,7 @@ docker container rm analyzer -f || true &&
     # Run container
     docker run --memory-swap -1 -it --security-opt seccomp=unconfined --platform linux/amd64 -e API_KEY="${API_KEY}" -e PROJECT_ID="${PROJECT_ID}" --name analyzer -t testim_analyzer -n "${PROJECT_NAME}" -a "${PARAMS}" &&
     #  Copy output folder from docker to current path
-    docker cp analyzer:/app/src/output ${PWD} &&
+    docker cp analyzer:/app/src/python/output ${PWD} &&
     # Exit & Remove container
     exit &&
     docker container rm analyzer -f && 
