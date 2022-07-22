@@ -3,3 +3,4 @@ dev.md
 .DS_Store
 output
 testim-headless.zip
+junitResult.xml
