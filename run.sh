@@ -28,7 +28,7 @@ fi
 # Remove existing container if any
 docker container rm analyzer -f || true &&
     # pull image
-    docker pull genesisthomas/testim-analyzer:latest &&
+    docker pull testimio/testim-analyzer:latest &&
     docker build -q -t testim_analyzer . &&
     # Run container
     docker run --memory-swap -1 -it --security-opt seccomp=unconfined --platform linux/amd64 -e API_KEY="${API_KEY}" -e PROJECT_ID="${PROJECT_ID}" --name analyzer -t testim_analyzer -n "${PROJECT_NAME}" -a "${PARAMS}" &&

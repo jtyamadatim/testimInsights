@@ -1,2 +1,2 @@
-FROM genesisthomas/testim-analyzer
+FROM testimio/testim-analyzer
 COPY . /app/.
