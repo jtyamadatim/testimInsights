@@ -5,7 +5,6 @@
 **Disclaimer**: This project is provided "AS IS". It is not officially supported by Testim.
 
 **Table of contents:**
-
 - [Testim Failure Analyzer](#testim-failure-analyzer)
 - [Pre-requisite:](#pre-requisite)
   - [Windows:](#windows)
@@ -13,29 +12,29 @@
 - [Steps to execute:](#steps-to-execute)
   - [Mac:](#mac-1)
   - [Windows: </br>](#windows-br)
-- [Analyze Test runs:](#analyze-test-runs)
-  - [Via downloaded Test runs csv:](#via-downloaded-test-runs-csv)
-    - [High level analysis:](#high-level-analysis)
-    - [In-depth Analysis:](#in-depth-analysis)
-  - [Via Testim API based on:](#via-testim-api-based-on)
-    - [Dates:](#dates)
-    - [Execution id/ run id:](#execution-id-run-id)
-      - [single:](#single)
-      - [multiple:](#multiple)
-    - [Execution name:](#execution-name)
-      - [single:](#single-1)
-      - [multiple:](#multiple-1)
-    - [In-depth Analysis:  </br>](#in-depth-analysis--br)
+- [Analyze Test Runs:](#analyze-test-runs)
+  - [via downloaded Test Runs csv:](#via-downloaded-test-runs-csv)
+    - [in-depth analysis:](#in-depth-analysis)
+    - [high level analysis:](#high-level-analysis)
+  - [via Testim API:](#via-testim-api)
+    - [in-depth analysis:  </br>](#in-depth-analysis--br)
+    - [high level analysis:](#high-level-analysis-1)
+      - [dates:](#dates)
+      - [execution id/ run id:](#execution-id-run-id)
+      - [execution name:](#execution-name)
+      - [result label:](#result-label)
   - [Advanced Customizations:](#advanced-customizations)
 - [Generate standalone reports:](#generate-standalone-reports)
-  - [Via downloaded test runs csv (Both Passed & Failed tests)](#via-downloaded-test-runs-csv-both-passed--failed-tests)
-  - [Via API: (Only failed tests)](#via-api-only-failed-tests)
-    - [based on dates:](#based-on-dates)
-    - [single execution name:](#single-execution-name)
-    - [single result id:  (Both Passed & Failed tests)](#single-result-id--both-passed--failed-tests)
-    - [multiple result ids:  (Both Passed & Failed tests)](#multiple-result-ids--both-passed--failed-tests)
-
-
+  - [without downloaded screenshots & video:](#without-downloaded-screenshots--video)
+    - [for both passed & failed tests:](#for-both-passed--failed-tests)
+      - [via report-file from testim CLI/ docker:](#via-report-file-from-testim-cli-docker)
+      - [via downloaded test runs csv:](#via-downloaded-test-runs-csv-1)
+      - [via API result id:](#via-api-result-id)
+    - [for failed tests only via API:](#for-failed-tests-only-via-api)
+      - [dates:](#dates-1)
+      - [execution name:](#execution-name-1)
+      - [execution id/ run id:](#execution-id-run-id-1)
+  - [with downloaded screenshots & video:](#with-downloaded-screenshots--video)
 
 # Pre-requisite:
 
@@ -68,7 +67,7 @@ sh run.sh "<PROJECT_NAME>" "<PROJECT_ID>" "<API_KEY>"
 
 </br>
 
-**Notes:**
+**notes:**
 
 - 1st argument: Replace `<PROJECT_NAME>` with your testim project name.
 - 2nd argument: Replace `<PROJECT_ID>` with your testim project id.
@@ -76,77 +75,79 @@ sh run.sh "<PROJECT_NAME>" "<PROJECT_ID>" "<API_KEY>"
 
 <p></br>
 
-# Analyze Test runs:
+# Analyze Test Runs:
 
-## Via downloaded Test runs csv:
+## via downloaded Test Runs csv:
 
 **Pre-requisite: Download the required test runs csv file to the current working directory.**
 
 </br> 
 
-### High level analysis:
-```sh
-"csvFile=on"
-```
-
-### In-depth Analysis:
+### in-depth analysis:
 ```sh
 "csvFile=on|trends=on|email=on|deep_analytics=on|excel=on|showIssues=on"
 ```
 
-**Notes:**
+### high level analysis:
+```sh
+"csvFile=on"
+```
+
+**notes:**
 - 4th argument: csvFile=on will analyze any test runs csv file present in the current working directory. 
 - There are other configurable filters/ options to enable advanced analysis.
 
 <p></br>
 
-## Via Testim API based on:
+## via Testim API:
 
 **Note:** Change branch as applicable.</br> 
 </br> 
 
-### Dates:
+
+### in-depth analysis:  </br>
+
+**Note:** Append `|trends=on|email=on|deep_analytics=on|excel=on|showIssues=on` with any of the below options. E.g. (Dates)
+</br>
+```sh
+"startDate=2022-06-23|endDate=2022-06-23|branch=master|trends=on|email=on|deep_analytics=on|excel=on|showIssues=on"
+```
+
+### high level analysis: 
+
+#### dates:
 ```sh
 "startDate=2022-07-12|endDate=2022-07-12|branch=master"
-```
+``` 
 </br> 
 
-### Execution id/ run id:
-#### single:
+#### execution id/ run id:
 ```sh
 "runId=hKqljO1q6WMi8KJn|startDate=2022-06-23|endDate=2022-06-23|branch=master"
 ```
+notes:</br>
+- RunId can be retrieved from single execution details view url (after suites/)</br>
+- Supports more than one runId seperated by semicolon.</br></br>
 
-#### multiple:
-```sh
-"runId=Om9t9C4MAXZAuOPE;hKqljO1q6WMi8KJn|startDate=2022-06-23|endDate=2022-06-27|branch=master"
-```
-</br> 
+#### execution name:
 
-### Execution name:
-#### single:
 ```sh
 "executionName=pass, fail & skip|startDate=2022-06-23|endDate=2022-06-23|branch=master"
 ```
-#### multiple:
+notes:</br>
+- executionName can be retrieved from Testim's Executions page</br>
+- Supports more than one executionName seperated by semicolon.</br></br>
+
+#### result label:
 
 ```sh
-"executionName=pass, fail & skip;Testim Booking Smoke Web|startDate=2022-06-23|endDate=2022-06-23|branch=master"
+"resultLabel=pass, fail & skip|startDate=2022-06-23|endDate=2022-06-23|branch=master"
 ```
+notes:</br>
+- Refer [here](https://help.testim.io/docs/result-labels) to add result labels to your tests.
+- resultLabel can be retrieved from Testim's Executions page</br>
+- Supports more than one resultLabel seperated by semicolon.</br></br>
 </br> 
-
-
-### In-depth Analysis:  </br>
-
-**Note:** Can be combined with above options
-</br>
-```sh
-"startDate=2022-06-23|endDate=2022-06-23|trends=on|email=on|deep_analytics=on|excel=on|showIssues=on"
-```
-
-**Notes:**
-- 4th argument: Corresponds to configurable filters/ options to enable advanced analysis.
-<p></br>
 
 **Screenshot:** </br> </br>
 <img src="images/analyzer_report.png" alt="single report" width="700"/>
@@ -160,39 +161,76 @@ Change the background color, debug with logs, customize logo & custom version nu
 
 # Generate standalone reports:
 
-## Via downloaded test runs csv (Both Passed & Failed tests)
+- Create standalone test reports with test info, test params, steps info, filter option, option to download screenshots & create a standalone report with screenshots & stitched together video. 
+- Each Screenshot can be zoomed in and clicked to view full screen. 
+- Table colors change based on Test status & Groups. </br>
+
+##  without downloaded screenshots & video:
+### for both passed & failed tests: 
+
+#### via report-file from testim CLI/ docker:
+
+**Prerequisite**: Run testim [CLI](https://help.testim.io/docs/the-command-line-cli) or [docker](https://help.testim.io/docs/jenkins-integration-using-docker) with an additional parameter: `-r ~/report.xml`
+
+```sh
+"singleReport=on|reportFile=./report.xml"
+```
+
+notes:</br>
+- reportFile value corresponds to the report path mentioned with `-r ` of testim [CLI](https://help.testim.io/docs/the-command-line-cli) or [docker](https://help.testim.io/docs/jenkins-integration-using-docker)  </br>
+
+</br>
+
+#### via downloaded test runs csv: 
+**Pre-requisite: Download the required test runs csv file to the current working directory.**
 ```sh
 "csvFile=on|singleReport=on"
 ```
-</br>
+**Note:** 
+- Uses direct screenshot urls with a default validity of 30 days. 
+</br></br>
 
-## Via API: (Only failed tests)
+  
+#### via API result id:
+```sh
+"singleReport=on|resultId=bIXYH4A51vScEg2i"
+```
+notes:</br>
+- Use this only when you want to download individual reports. Prefer to generate via report-file if executed from CLI/CI.
+- resultId can be retrieved from single report url (after result-id=). </br>
+- Supports more than one resultId seperated by semicolon.</br></br>
 
-**Note:** Change branch as applicable.</br> </br> 
+### for failed tests only via API: 
+**Note:** Change **branch** as applicable.</br> </br> 
 
-### based on dates:
+#### dates:
+
 ```sh
 "singleReport=on|startDate=2022-07-12|endDate=2022-07-12|branch=master"
 ```
 </br>
 
-### single execution name:
+#### execution name:
 ```sh
 "singleReport=on|executionName=pass, fail & skip|startDate=2022-06-23|endDate=2022-06-23|branch=master"
 ```
-</br>
+notes:</br>
+- executionName can be retrieved from Testim's Executions page</br>
+- Supports more than one executionName seperated by semicolon.</br></br>
 
-### single result id:  (Both Passed & Failed tests)
+#### execution id/ run id:
 ```sh
-"singleReport=on|resultId=bIXYH4A51vScEg2i"
+"singleReport=on|runId=iGsJuXvLxXwHU3HL|startDate=2022-06-23|endDate=2022-06-23|branch=master"
 ```
-</br>
+notes:</br>
+- runId can be retrieved from single execution details view url (after suites/)</br>
+- Supports more than one runId seperated by semicolon.</br></br>
 
-### multiple result ids:  (Both Passed & Failed tests)
+## with downloaded screenshots & video:
+Append `downloadArtifacts=on` to any of the generate standalone report options if you wish to **download** screenshots & video. [ Default - off ] </br>
+E.g (report-file): </br>
 ```sh
-"singleReport=on|resultId=h9QQu5ehaOF0dqyM;DA0kHuTMG204Da16"
+"singleReport=on|reportFile=./report.xml|downloadArtifacts=on"
 ```
-</br>
-
-**Screenshot:** </br> </br>
+**Sample Screenshot:** </br> </br>
 <img src="images/single_report.png" alt="single report" width="700"/>
