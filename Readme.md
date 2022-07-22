@@ -1,11 +1,11 @@
-# Testim Failure Analyzer
+# Testim-Analyzer
 
   This is a fully responsive, interactive, predictive, mobile friendly, emailable, auto generated website that has the ability to analyze failed tests results and provide meaningful insights, create individual testim reports with screenshots & video.
 
 **Disclaimer**: This project is provided "AS IS". It is not officially supported by Testim.
 
 **Table of contents:**
-- [Testim Failure Analyzer](#testim-failure-analyzer)
+- [Testim-Analyzer](#testim-analyzer)
 - [Pre-requisite:](#pre-requisite)
   - [Windows:](#windows)
   - [Mac:](#mac)
