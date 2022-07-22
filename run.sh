@@ -25,16 +25,20 @@ if [ "$PARAMS" = "" ]; then
     exit 1
 fi
 
+# removes any dangling images
+docker rmi $(docker images -f "dangling=true" -q)
 # Remove existing container if any
 docker container rm analyzer -f || true &&
     # pull image
     docker pull testimio/testim-analyzer:latest &&
+    # build a local image with additional files if any
     docker build -q -t testim_analyzer . &&
     # Run container
     docker run --memory-swap -1 -it --security-opt seccomp=unconfined --platform linux/amd64 -e API_KEY="${API_KEY}" -e PROJECT_ID="${PROJECT_ID}" --name analyzer -t testim_analyzer -n "${PROJECT_NAME}" -a "${PARAMS}" &&
     #  Copy output folder from docker to current path
     docker cp analyzer:/app/src/python/output ${PWD} &&
-    # Exit & Remove container
-    exit &&
-    docker container rm analyzer -f && 
-    docker image prune -f
+    # Remove container
+    docker container rm analyzer -f &&
+    # Remove dangling images if any
+    docker rmi $(docker images -f "dangling=true" -q) &&
+    exit
